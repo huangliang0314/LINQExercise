@@ -69,6 +69,32 @@ namespace WFA.LINQ
             }
             this.richTextBox1.Text = res1111;
 
+            //组链接
+            var racer11 = Formulal.GetChampionships()
+                .SelectMany(r => new List<RacerInfo>() {
+                    new RacerInfo()
+                    {
+                        Year=r.Year,
+                        Position=1,
+                        FirstName=r.First.Substring(0,r.First.IndexOf(" ")),
+                        LastName=r.First.Substring(r.First.IndexOf(" ")+1),
+                    },
+                    new RacerInfo()
+                    {
+                        Year=r.Year,
+                        Position=2,
+                        FirstName=r.Second.Substring(0,r.Second.IndexOf(" ")),
+                        LastName=r.Second.Substring(r.Second.IndexOf(" ")+1),
+                    },
+                    new RacerInfo()
+                    {
+                        Year=r.Year,
+                        Position=3,
+                        FirstName=r.Third.Substring(0,r.Third.IndexOf(" ")),
+                        LastName=r.Third.Substring(r.Third.IndexOf(" ")+1),
+                    }
+                });
+
         }
 
     }
